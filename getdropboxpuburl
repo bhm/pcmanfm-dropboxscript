@@ -1,0 +1,9 @@
+#!/bin/bash
+path=`echo -e \"$1\" | xargs dropbox puburl`
+echo $path | xclip -i -selection clipboard
+basename=`echo -e \"$1\" | xargs basename`
+if [ -f /usr/bin/notify-send ]
+then
+	notify-send "Link in clipboard" "$basename" -i dropbox
+fi
+exit 0
